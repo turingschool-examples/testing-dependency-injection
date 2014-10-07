@@ -5,9 +5,10 @@ class Item
 							:unit_price,
 							:merchant_id,
 							:created_at,
-							:updated_at
+							:updated_at,
+							:repository
 
-	def initialize(attributes)
+	def initialize(attributes, repository)
 		@id 					= attributes[:id]
 		@name 				= attributes[:name]
 		@description 	= attributes[:description]
@@ -15,5 +16,6 @@ class Item
 		@unit_price 	= attributes[:unit_price]
 		@updated_at 	= attributes[:updated_at]
 		@created_at 	= attributes[:created_at]
+		@repository   = repository
 	end
 end
