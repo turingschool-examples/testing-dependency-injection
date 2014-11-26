@@ -2,7 +2,7 @@ require_relative 'test_helper'
 require_relative '../lib/item'
 
 class ItemTest < Minitest::Test
-	attr_reader :item
+	attr_reader :item, :parent
 
 	def setup
 		attributes = { id: "1",
@@ -12,7 +12,8 @@ class ItemTest < Minitest::Test
 									 merchant_id: "2",
 									 created_at: "2012-03-27 14:53:59 UTC",
 									 updated_at: "2012-03-27 14:53:59 UTC" }
-		@item       = Item.new(attributes)
+		@parent     = Minitest::Mock.new
+		@item       = Item.new(attributes, parent)
 	end
 
 	def test_it_exists
@@ -27,5 +28,11 @@ class ItemTest < Minitest::Test
 		assert_equal "2", item.merchant_id
 		assert_equal "2012-03-27 14:53:59 UTC", item.updated_at
 		assert_equal "2012-03-27 14:53:59 UTC", item.created_at
+	end
+
+	def test_it_delegates_merchant_to_its_repository
+		parent.expect(:find_merchant_from, nil, ["2"])
+		item.merchant
+		parent.verify
 	end
 end

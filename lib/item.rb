@@ -6,8 +6,9 @@ class Item
 							:merchant_id,
 							:created_at,
 							:updated_at,
+							:repository
 
-	def initialize(attributes)
+	def initialize(attributes, parent)
 		@id 					= attributes[:id]
 		@name 				= attributes[:name]
 		@description 	= attributes[:description]
@@ -15,5 +16,10 @@ class Item
 		@unit_price 	= attributes[:unit_price]
 		@updated_at 	= attributes[:updated_at]
 		@created_at 	= attributes[:created_at]
+		@repository   = parent
+	end
+
+	def merchant
+		repository.find_merchant_from(merchant_id)
 	end
 end
