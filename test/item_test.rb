@@ -12,8 +12,7 @@ class ItemTest < Minitest::Test
 									 merchant_id: "2",
 									 created_at: "2012-03-27 14:53:59 UTC",
 									 updated_at: "2012-03-27 14:53:59 UTC" }
-		repository = []
-		@item       = Item.new(attributes, repository)
+		@item       = Item.new(attributes)
 	end
 
 	def test_it_exists
@@ -28,9 +27,5 @@ class ItemTest < Minitest::Test
 		assert_equal "2", item.merchant_id
 		assert_equal "2012-03-27 14:53:59 UTC", item.updated_at
 		assert_equal "2012-03-27 14:53:59 UTC", item.created_at
-	end
-
-	def test_it_has_a_repository
-		assert item.repository
 	end
 end
