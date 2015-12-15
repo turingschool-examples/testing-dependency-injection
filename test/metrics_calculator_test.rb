@@ -34,13 +34,18 @@ class MetricsCalculatorTest < Minitest::Test
     assert_equal 64, calc.total_students
   end
 
-  def test_it_lists_all_student_names
+  def test_it_calculate_an_average_grade
     skip
-    sec = Section.new("Biology 1")
-    student_1 = Student.new(:first_name => "Frank")
-    student_2 = Student.new(:first_name => "Myra")
-    sec.enroll(student_1)
-    sec.enroll(student_2)
-    assert_equal ["Frank", "Myra"], sec.student_names
+    calc = MetricsCalculator.new
+    sec_1 = Section.new("Biology 1")
+    sec_2 = Section.new("Biology 2")
+    sec_3 = Section.new("Biology 3")
+    calc.add(sec_1)
+    calc.add(sec_2)
+    calc.add(sec_3)
+    # sec 1 should have an average grade of 82 and 4 students
+    # sec 2 should have an average grade of 86 and 5 students
+    # sec 3 should have an average grade of 90 and 6 students
+    assert_equal 86.5, calc.average_grade
   end
 end
