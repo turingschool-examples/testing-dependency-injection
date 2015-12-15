@@ -18,8 +18,8 @@ class SectionTest < Minitest::Test
     student_2 = Student.new(:first_name => "Myra")
     sec.enroll(student_1)
     sec.enroll(student_2)
-    assert_includes sec.students(student_1)
-    assert_includes sec.students(student_2)
+    assert_includes sec.students, student_1
+    assert_includes sec.students, student_2
   end
 
   def test_it_lists_all_student_names
