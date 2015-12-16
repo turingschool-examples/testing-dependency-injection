@@ -25,7 +25,7 @@ class ScheduleTest < Minitest::Test
     refute File.exist?('./schedule.txt')
 
     schedule = Schedule.new
-    (1..10).each do |i|
+    (1..9).each do |i|
       schedule.add Section.new("History #{i}")
       schedule.add Section.new("Biology #{i}")
       schedule.add Section.new("Algebra #{i}")
@@ -42,7 +42,7 @@ class ScheduleTest < Minitest::Test
 
     output_file_handle = File.open('./schedule.txt', 'w')
     schedule = Schedule.new(output_file_handle)
-    (1..10).each do |i|
+    (1..9).each do |i|
       schedule.add Section.new("History #{i}")
       schedule.add Section.new("Biology #{i}")
       schedule.add Section.new("Algebra #{i}")
@@ -75,7 +75,7 @@ class ScheduleTest < Minitest::Test
 
     faker = FakeFile.new
     schedule = Schedule.new(faker)
-    (1..10).each do |i|
+    (1..9).each do |i|
       schedule.add Section.new("History #{i}")
       schedule.add Section.new("Biology #{i}")
       schedule.add Section.new("Algebra #{i}")
