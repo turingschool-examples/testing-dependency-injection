@@ -29,6 +29,7 @@ class ScheduleTest < Minitest::Test
       schedule.add Section.new("Biology #{i}")
       schedule.add Section.new("Algebra #{i}")
     end
+    schedule.write
 
     assert File.exist?('schedule.txt')
   end
