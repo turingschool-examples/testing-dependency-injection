@@ -22,7 +22,7 @@ class ScheduleTest < Minitest::Test
   def test_it_writes_a_schedule_to_the_file_system_by_default
     skip
     `rm schedule.txt`
-    refute File.exist?('schedule.txt')
+    refute File.exist?('./schedule.txt')
 
     schedule = Schedule.new
     (1..10).each do |i|
@@ -32,15 +32,15 @@ class ScheduleTest < Minitest::Test
     end
     schedule.write
 
-    assert File.exist?('schedule.txt')
+    assert File.exist?('./schedule.txt')
   end
 
   def test_it_writes_a_schedule_by_specifying_the_file_system
     skip
     `rm schedule.txt`
-    refute File.exist?('schedule.txt')
+    refute File.exist?('./schedule.txt')
 
-    output_file_handle = File.open('schedule.txt', 'w')
+    output_file_handle = File.open('./schedule.txt', 'w')
     schedule = Schedule.new(output_file_handle)
     (1..10).each do |i|
       schedule.add Section.new("History #{i}")
@@ -63,6 +63,10 @@ class ScheduleTest < Minitest::Test
 
     def write(data)
       @content << data
+    end
+
+    def close
+      true
     end
   end
 
