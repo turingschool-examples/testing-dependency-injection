@@ -40,7 +40,8 @@ class ScheduleTest < Minitest::Test
     `rm schedule.txt`
     refute File.exist?('schedule.txt')
 
-    schedule = Schedule.new(File)
+    output_file_handle = File.open('schedule.txt', 'w')
+    schedule = Schedule.new(output_file_handle)
     (1..10).each do |i|
       schedule.add Section.new("History #{i}")
       schedule.add Section.new("Biology #{i}")
