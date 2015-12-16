@@ -69,16 +69,16 @@ class ScheduleTest < Minitest::Test
   def test_it_writes_a_schedule_to_an_injected_writer
     skip
 
-    schedule = Schedule.new(FakeFile)
+    faker = FakeFile.new
+    schedule = Schedule.new(faker)
     (1..10).each do |i|
       schedule.add Section.new("History #{i}")
       schedule.add Section.new("Biology #{i}")
       schedule.add Section.new("Algebra #{i}")
     end
     schedule.write
-    target = schedule.output_target
 
     expected = File.read("./test/support/expected.txt")
-    assert_equal expected, target.content
+    assert_equal expected, faker.content
   end
 end
