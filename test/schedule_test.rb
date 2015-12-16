@@ -10,7 +10,7 @@ class ScheduleTest < Minitest::Test
     skip
     schedule = Schedule.new
     sec_1 = Section.new("Biology 1")
-    sec_2 = Section.new("Biology 1")
+    sec_2 = Section.new("Biology 2")
     schedule.add(sec_1)
     schedule.add(sec_2)
     assert schedule.has_section?("Biology 1")
