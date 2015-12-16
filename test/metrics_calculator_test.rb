@@ -34,7 +34,7 @@ class MetricsCalculatorTest < Minitest::Test
     assert_equal 64, calc.total_students
   end
 
-  def test_it_calculate_an_average_grade
+  def test_it_calculates_an_average_grade
     skip
     calc = MetricsCalculator.new
     sec_1 = Section.new("Biology 1")
