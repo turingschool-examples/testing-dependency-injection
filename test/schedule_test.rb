@@ -1,5 +1,6 @@
 require './test/test_helper'
 require './lib/schedule'
+require './lib/section'
 
 class ScheduleTest < Minitest::Test
   def test_it_exists
